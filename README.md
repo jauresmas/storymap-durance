@@ -51,7 +51,9 @@ sur `index.html` ne suffit pas).
 python -m http.server 8765 --directory web
 ```
 
-Puis ouvrir http://localhost:8765.
+Puis ouvrir `http://localhost:8765` (adresse de test, valable seulement sur ton ordinateur).
+
+Version en ligne : https://jauresmas.github.io/storymap-durance/
 
 **Publication sur GitHub Pages** : le workflow `.github/workflows/pages.yml` publie le
 dossier `web/` à chaque envoi sur `main`. À activer une fois dans le dépôt :

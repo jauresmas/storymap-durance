@@ -1,4 +1,4 @@
-/* 50 ans au fil de la Durance — plan annexé (MapLibre GL JS) piloté par le défilement du dossier */
+/* 50 ans au fil de la Durance : plan annexé (MapLibre GL JS) piloté par le défilement du dossier */
 (() => {
   'use strict';
 
