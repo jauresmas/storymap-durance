@@ -53,7 +53,9 @@ python -m http.server 8765 --directory web
 
 Puis ouvrir `http://localhost:8765` (adresse de test, valable seulement sur ton ordinateur).
 
-Version en ligne : https://jauresmas.github.io/storymap-durance/
+**Voir la StoryMap en ligne : https://raw.githack.com/jauresmas/storymap-durance/main/web/index.html**
+
+(servie directement depuis ce dépôt ; l'adresse GitHub Pages https://jauresmas.github.io/storymap-durance/ prendra le relais une fois GitHub Actions disponible sur le compte)
 
 **Publication sur GitHub Pages** : le workflow `.github/workflows/pages.yml` publie le
 dossier `web/` à chaque envoi sur `main`. À activer une fois dans le dépôt :
