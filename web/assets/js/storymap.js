@@ -245,7 +245,7 @@
     return;
   }
   if (location.protocol === 'file:') {
-    alerte('Ouvrez cette page avec un serveur web : les données du plan ne se lisent pas depuis le disque.');
+    alerte('Ouvrez cette page avec un serveur web : les données du plan ne se lisent pas depuis le disque.');
   }
 
   // --- Carte -------------------------------------------------------------------
