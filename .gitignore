@@ -1,0 +1,16 @@
+# Données re-téléchargeables : scripts\lancer.bat 01_telecharger_donnees.py
+# (referentiel.gpkg pèse ~31 Mo : trop lourd pour un envoi GitHub sur cette connexion)
+donnees/referentiel.gpkg
+donnees/sources/
+
+# Sorties brutes de qgis2web (copiées dans web/cartes/ par 04_integrer_export.py)
+web/exports/
+
+# Captures de contrôle de la mise en page
+.impeccable/review/
+
+# Configuration locale de l'éditeur et de Claude Code
+.claude/
+
+__pycache__/
+*.qgz~

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "toponyme": "Barrage de Saint-Lazare" }, "geometry": { "type": "Point", "coordinates": [ 5.95202, 44.17523 ] } },
+{ "type": "Feature", "properties": { "toponyme": "Barrage de Mallemort" }, "geometry": { "type": "Point", "coordinates": [ 5.2014, 43.7399 ] } },
+{ "type": "Feature", "properties": { "toponyme": "la Prise (Barrage)" }, "geometry": { "type": "Point", "coordinates": [ 5.89415, 43.93445 ] } },
+{ "type": "Feature", "properties": { "toponyme": "Barrage de Cadarache" }, "geometry": { "type": "Point", "coordinates": [ 5.74319, 43.71818 ] } }
+]
+}

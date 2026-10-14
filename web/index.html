@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>50 ans au fil de la Durance — récit cartographique</title>
+<meta name="description" content="De la loi de 1955 à la GEMAPI&#8239;: l’histoire du Syndicat mixte d’aménagement de la vallée de la Durance racontée en cartes, à partir de données publiques.">
+<meta property="og:title" content="50 ans au fil de la Durance">
+<meta property="og:description" content="Récit cartographique indépendant&#8239;: 1955-2026, la Durance et le syndicat qui la gère.">
+<meta name="theme-color" content="#16968c">
+<link rel="preload" href="assets/fonts/archivo-normal-100_900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/vendor/maplibre-gl.css">
+<link rel="stylesheet" href="assets/css/storymap.css">
+</head>
+<body>
+
+<a class="evitement" href="#p-loi1955">Aller au récit</a>
+
+<!-- Plan annexé : la carte reste derrière tout le dossier -->
+<div id="carte" class="carte" role="region" aria-label="Carte interactive de la Durance"></div>
+<div id="calque" class="calque">
+  <div id="calque-carte" class="calque-carte"></div>
+  <span class="calque-ligne" aria-hidden="true"></span>
+  <button class="calque-poignee" type="button" role="slider" aria-label="Position du calque de 1950-1965"
+          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+    <span class="calque-date">1950-1965</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>
+    <span class="calque-date">Aujourd’hui</span>
+  </button>
+</div>
+
+<header class="couverture" id="couverture" data-etape="couverture">
+  <!-- Étiquette Dymo collée sur le dos de la chemise -->
+  <p class="dymo dymo-dos" aria-hidden="true">Durance</p>
+  <div class="fenetre" aria-hidden="true">
+    <p class="fenetre-legende">Tracé de la Durance, de l’amont de Briançon au Rhône · 321&nbsp;km mesurés sur la BD TOPO</p>
+  </div>
+  <div class="couverture-texte">
+    <div class="etiquette">
+      <h1>50 ans au fil de la Durance</h1>
+      <p class="etiquette-sous-titre">Comment un syndicat de vallée né en 1976 est devenu le gestionnaire de la rivière, de Serre-Ponçon au Rhône.</p>
+      <div class="etiquette-pied">
+        <p class="etiquette-cote">Dossier documentaire · 1955 – 2026 · sources publiques<br>
+          <span>Récit cartographique indépendant, non affilié au SMAVD.</span></p>
+        <p class="tampon tampon-couverture" aria-hidden="true">1976 – 2026</p>
+      </div>
+    </div>
+    <a class="bouton-dymo" href="#p-loi1955">
+      Ouvrir le dossier
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</header>
+
+<nav class="intercalaires" aria-label="Intercalaires du dossier">
+  <a href="#p-loi1955" data-etape="loi1955">1955</a>
+  <a href="#p-canal" data-etape="canal">1966</a>
+  <a href="#p-creation" data-etape="creation">1976</a>
+  <a href="#p-digues" data-etape="digues">1982</a>
+  <a href="#p-nature" data-etape="nature">1997</a>
+  <a href="#p-bassin" data-etape="bassin">2005</a>
+  <a href="#p-gemapi" data-etape="gemapi">2018</a>
+  <a href="#p-demain" data-etape="demain">2026</a>
+</nav>
+
+<aside class="cartouche" aria-label="Cartouche du plan">
+  <p class="c-titre"><strong id="c-plan">La Durance, de la source au Rhône</strong></p>
+  <ul class="c-legende" id="c-legende"></ul>
+  <div class="c-pied">
+    <span class="c-num" id="c-num">Plan d’ensemble</span>
+    <div class="c-annee" id="c-annee" aria-label="Année">
+      <span>1</span><span>9</span><span>7</span><span>6</span>
+    </div>
+    <svg class="c-nord" id="c-nord" viewBox="0 0 24 32" aria-label="Nord" role="img">
+      <path class="c-nord-plein" d="M12 2 4 26l8-5z"/><path class="c-nord-vide" d="M12 2l8 24-8-5z"/>
+      <text x="12" y="32" text-anchor="middle">N</text>
+    </svg>
+    <div class="c-echelle" id="c-echelle"><span class="c-barre"></span><span class="c-valeur">10 km</span></div>
+  </div>
+  <p class="c-lecture" id="c-lecture" aria-live="off">—</p>
+  <p class="c-sources">IGN · INPN · Vigicrues — Licence Etalab 2.0 · MapLibre</p>
+  <button class="c-recentrer" id="c-recentrer" type="button" hidden>Recentrer le plan</button>
+  <p class="c-alerte" id="c-alerte" role="status" hidden></p>
+</aside>
+
+<main class="dossier" id="dossier">
+
+  <article class="piece" id="p-loi1955" data-etape="loi1955">
+    <p class="tampon tampon-date" aria-hidden="true">5 janv. 1955</p>
+    <h2>Une loi pour dompter la rivière</h2>
+    <p>Torrentielle, la Durance alterne étiages sévères et crues violentes. La loi du 5 janvier 1955 confie à EDF l’aménagement de la chaîne Durance-Verdon, avec trois buts&#8239;: produire de l’électricité, lutter contre les crues et garantir l’eau des irrigants et des villes.</p>
+    <p>Le chantier de Serre-Ponçon s’ouvre la même année. La mise en eau commence fin 1959 et s’achève en mai 1961&#8239;: la retenue couvre environ 3&nbsp;000 hectares.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;1</span><span>1955 – 1961</span><span class="piece-ref">Réf.&#8239;: loi n°&nbsp;55-6 du 5 janvier 1955</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.paca.developpement-durable.gouv.fr/IMG/pdf/note_de_synthese-2.pdf">DREAL PACA</a>, <a href="https://www.culture.gouv.fr/regions/Drac-Provence-Alpes-Cote-d-Azur/Politique-et-actions-culturelles/Architecture-contemporaine-remarquable-en-Paca/le-label-architecture-contemporaine-remarquable-en-provence-alpes-cote-d-azur/Label-ACR-Hautes-Alpes/Espinasses-Rousset-Savines-le-Lac-Ouvrages-de-Serre-Poncon">ministère de la Culture</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-canal" data-etape="canal">
+    <p class="tampon tampon-date" aria-hidden="true">1966</p>
+    <h2>Un canal de 250 kilomètres</h2>
+    <p>Plus bas, un canal usinier dérive une partie des eaux de la Durance vers une chaîne de centrales hydroélectriques. En service depuis 1966, il court sur environ 250&nbsp;km, de Serre-Ponçon jusqu’à l’étang de Berre.</p>
+    <p>À Mallemort, l’eau est soit dirigée vers les usines de Salon-de-Provence et de Saint-Chamas, soit rendue à la rivière.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;2</span><span>1959 – 1966</span><span class="piece-ref">Réf.&#8239;: chaîne Durance-Verdon, EDF</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.edf.fr/sites/groupe/files/Hydraulique/page%20durance%20verdon/fiche_edf_duranceverdon.pdf">EDF, fiche Durance-Verdon</a>, <a href="https://www.paca.developpement-durable.gouv.fr/IMG/pdf/note_de_synthese-2.pdf">DREAL PACA</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-calque" data-etape="calque">
+    <p class="tampon tampon-date" aria-hidden="true">1950 / 2024</p>
+    <h2>Soixante ans d’écart, au même endroit</h2>
+    <p>L’IGN a numérisé et redressé les photographies aériennes des années 1950-1965. Posées sur les prises de vue actuelles, elles montrent le lit de la Durance avant et après les grands aménagements, ici entre Oraison et Manosque.</p>
+    <p class="consigne">Faites glisser le calque sur la carte pour passer d’une époque à l’autre.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;3</span><span>1950 – aujourd’hui</span><span class="piece-ref">Réf.&#8239;: BD ORTHO historique</span>
+      <span class="piece-sources">Source&#8239;: <a href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-ORTHO-HISTO">IGN, BD ORTHO historique</a> et BD ORTHO</span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-creation" data-etape="creation">
+    <p class="tampon tampon-date" aria-hidden="true">5 nov. 1976</p>
+    <h2>Naissance d’un syndicat de vallée</h2>
+    <p>Le 5 novembre 1976, un arrêté interpréfectoral autorise la création du Syndicat mixte d’aménagement de la vallée de la Durance. Il réunit les départements des Bouches-du-Rhône et de Vaucluse et 31 communes riveraines, dont 18 dans les Bouches-du-Rhône.</p>
+    <p>Son objet&#8239;: aménager, restaurer et mettre en valeur la Durance, notamment en créant et en confortant des digues pour protéger les personnes et les biens. Son siège administratif est aujourd’hui à Mallemort.</p>
+    <p class="mesure">Sur le plan&#8239;: 30 des 31 communes fondatrices, retrouvées parmi les communes riveraines des deux départements (limites actuelles). La 31<sup>e</sup> reste à identifier dans l’arrêté de 1976.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;4</span><span>1976</span><span class="piece-ref">Réf.&#8239;: arrêté interpréfectoral du 5 novembre 1976</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.departement13.fr/uploads/delibs/R0XUV.pdf">Département des Bouches-du-Rhône</a>, <a href="https://www.banatic.interieur.gouv.fr/intercommunalite/258402304-sm-d-amenagement-de-la-vallee-de-la-durance--smavd">BANATIC</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-digues" data-etape="digues">
+    <p class="tampon tampon-date" aria-hidden="true">1982</p>
+    <h2>Gardien du lit et des digues</h2>
+    <p>En 1982, le syndicat devient concessionnaire de la gestion du domaine public fluvial de la Durance&#8239;: il entretient le lit de la rivière et ses ouvrages.</p>
+    <p>La rivière rappelle sa force en 1994. En janvier puis en novembre, les débits journaliers dépassent 2&nbsp;000&nbsp;m³/s à Cadarache. À Mallemort, des repères de crue marquent encore le niveau atteint le 6 janvier 1994.</p>
+    <p class="mesure">Sur le plan&#8239;: 276&nbsp;km de levées recensées par la BD TOPO à moins d’un kilomètre de la rivière, et les 12 stations de mesure du réseau Vigicrues.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;5</span><span>1982 – 1994</span><span class="piece-ref">Réf.&#8239;: concession du domaine public fluvial, 1982</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.departement13.fr/uploads/delibs/R0XUV.pdf">Département des Bouches-du-Rhône</a>, <a href="https://biosisol.cerege.fr/squelettes/pdf/SourcesDoc/1994.pdf">CEREGE (débits)</a>, <a href="https://www.reperesdecrues.developpement-durable.gouv.fr/">repères de crues</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-nature" data-etape="nature">
+    <p class="tampon tampon-date" aria-hidden="true">1997 · 2003</p>
+    <h2>Une rivière à protéger</h2>
+    <p>La Durance n’est plus seulement une force à contenir. Ses milieux naturels sont reconnus par deux sites Natura 2000 «&nbsp;La Durance&nbsp;»&#8239;: l’un au titre de la directive Habitats, proposé dès 1997, l’autre de la directive Oiseaux, en 2003.</p>
+    <p>Le SMAVD est l’opérateur de ces sites&#8239;: il a élaboré leur document d’objectifs, approuvé en 2012, et en assure l’animation.</p>
+    <p class="mesure">Sur le plan&#8239;: 15&nbsp;917&nbsp;ha (directive Habitats) et 19&nbsp;963&nbsp;ha (directive Oiseaux), surfaces calculées sur les périmètres de l’INPN.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;6</span><span>1997 – 2012</span><span class="piece-ref">Réf.&#8239;: sites FR9301589 et FR9312003</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.paca.developpement-durable.gouv.fr/IMG/pdf/annexe_9.3_fr9301589_fiche_n2000.pdf">fiche Natura 2000 FR9301589</a>, <a href="https://www.smavd.org/wp-content/uploads/2023/02/2012-SMAVD-DOCOB-Durance-Synthese.pdf">DOCOB Durance</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-bassin" data-etape="bassin">
+    <p class="tampon tampon-date" aria-hidden="true">20 juil. 2005</p>
+    <h2>De Serre-Ponçon au Rhône</h2>
+    <p>Le 20 juillet 2005, un arrêté préfectoral étend le périmètre du syndicat&#8239;: les collectivités veulent un outil unique de gestion de la Durance, du barrage de Serre-Ponçon jusqu’au Rhône.</p>
+    <p>En 2010, le SMAVD est reconnu établissement public territorial de bassin (EPTB) sur tout le bassin versant de la Durance, qui couvre près de la moitié de la région.</p>
+    <p class="mesure">Sur le plan&#8239;: 321&nbsp;km de rivière mesurés sur la BD TOPO, et 89 communes riveraines en aval de Briançon.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;7</span><span>2005 – 2010</span><span class="piece-ref">Réf.&#8239;: arrêté préfectoral du 20 juillet 2005</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.departement13.fr/uploads/delibs/R0XUV.pdf">Département des Bouches-du-Rhône</a>, <a href="https://www.smavd.org/eptb-durance/">SMAVD</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-gemapi" data-etape="gemapi">
+    <p class="tampon tampon-date" aria-hidden="true">1er janv. 2018</p>
+    <h2>La GEMAPI redistribue les rôles</h2>
+    <p>Au 1<sup>er</sup> janvier 2018, la gestion des milieux aquatiques et la prévention des inondations (GEMAPI) deviennent une compétence des intercommunalités.</p>
+    <p>Le SMAVD réunit désormais la Région, les départements des Hautes-Alpes, des Alpes-de-Haute-Provence, de Vaucluse et des Bouches-du-Rhône, et treize intercommunalités riveraines. Certaines lui confient leurs ouvrages&#8239;: la Métropole Aix-Marseille-Provence le fait dès 2019.</p>
+    <p class="mesure">Sur le plan&#8239;: les 14 intercommunalités que traverse la Durance (le syndicat déclare treize intercommunalités membres).</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;8</span><span>2018 – 2019</span><span class="piece-ref">Réf.&#8239;: loi MAPTAM du 27 janvier 2014</span>
+      <span class="piece-sources">Sources&#8239;: <a href="https://www.smavd.org/eptb-durance/">SMAVD</a>, <a href="https://deliberations.ampmetropole.fr/documents/metropole/deliberations/2021/10/07/DELIBERATION/D0FHE.pdf">Métropole Aix-Marseille-Provence</a></span>
+    </footer>
+  </article>
+
+  <article class="piece" id="p-demain" data-etape="demain">
+    <p class="tampon tampon-date" aria-hidden="true">2026</p>
+    <h2>Et demain&nbsp;?</h2>
+    <p>Cinquante ans après sa création, le syndicat porte le programme d’actions de prévention des inondations (PAPI) Durance 2024-2030.</p>
+    <p>Partage d’une eau très sollicitée, crues, adaptation au changement climatique&#8239;: la Durance reste une rivière à gérer ensemble, de la montagne au Rhône.</p>
+    <p class="mesure">Sur le plan&#8239;: les levées et les stations de mesure qui encadrent aujourd’hui la rivière, de Serre-Ponçon au Rhône.</p>
+    <footer class="piece-pied">
+      <span>Pièce n°&nbsp;9</span><span>2024 – 2030</span><span class="piece-ref">Réf.&#8239;: PAPI Durance 2024-2030</span>
+      <span class="piece-sources">Source&#8239;: <a href="https://www.smavd.org/">SMAVD</a></span>
+    </footer>
+  </article>
+
+</main>
+
+<section class="dos" id="bordereau" data-etape="bordereau" aria-labelledby="titre-bordereau">
+  <div class="bordereau">
+    <h2 id="titre-bordereau">Bordereau du dossier</h2>
+    <div class="bordereau-colonnes">
+      <div>
+        <h3>Méthode</h3>
+        <ol class="methode">
+          <li><b>Collecte.</b> Données publiques interrogées par le service WFS de la Géoplateforme IGN (BD TOPO, ADMIN EXPRESS), l’INPN et Vigicrues.</li>
+          <li><b>Traitements.</b> Scripts PyQGIS reproductibles&#8239;: extractions, croisements spatiaux, plus court chemin dans le réseau hydrographique pour reconstituer le tracé de la Durance, simplification.</li>
+          <li><b>Sémiologie.</b> Styles éprouvés dans QGIS, puis plan web dessiné avec MapLibre GL JS&#8239;: estompage IGN, hydrographie et une couche thématique par pièce.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Sources</h3>
+        <ul class="sources">
+          <li>IGN, Géoplateforme&#8239;: BD TOPO, ADMIN EXPRESS, BD ORTHO, BD ORTHO historique, estompage</li>
+          <li>INPN&#8239;: sites Natura 2000 FR9301589 et FR9312003</li>
+          <li>Vigicrues&#8239;: stations hydrométriques</li>
+          <li>Département des Bouches-du-Rhône, BANATIC, SMAVD, EDF, DREAL PACA, CEREGE, Métropole Aix-Marseille-Provence</li>
+        </ul>
+        <p class="licence">Données sous Licence Ouverte Etalab 2.0.</p>
+      </div>
+    </div>
+    <p class="signature">Dossier constitué par <b>Jaurès DAA-HINGBANON</b> · octobre 2026</p>
+    <!-- À compléter avant publication : adresse du dépôt de code et lien de contact -->
+    <p class="liens">Code source et scripts&#8239;: <span class="a-completer">lien du dépôt à ajouter</span> · Contact&#8239;: <span class="a-completer">lien à ajouter</span></p>
+    <p class="avertissement">Projet personnel et indépendant, réalisé à partir de sources publiques. Il n’engage pas le Syndicat mixte d’aménagement de la vallée de la Durance.</p>
+    <p class="tampon tampon-clos" aria-hidden="true">Dossier clos</p>
+  </div>
+</section>
+
+<script src="assets/vendor/maplibre-gl.js"></script>
+<script src="assets/js/storymap.js"></script>
+</body>
+</html>

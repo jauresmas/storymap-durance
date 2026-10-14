@@ -1,0 +1,517 @@
+/* 50 ans au fil de la Durance — dossier d'archives et plan annexé */
+
+:root {
+  /* Chemise en carton pressé */
+  --chemise: #16968c;
+  --chemise-ombre: #0e6c65;
+  --chemise-lumiere: #44b4a9;
+  --chemise-encre: #04211f;
+  /* Feuillets, encres et rubans */
+  --feuille: #fdfdfb;
+  --filet: #d6dcdd;
+  --encre: #1b1d1f;
+  --encre-douce: #4a5257;
+  --tampon: #5a3d9a;
+  --ruban: #a8281e;
+  --dymo: #151515;
+  /* Plan */
+  --plan: #eef0ec;
+  --eau: #1f5f99;
+
+  --f-texte: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --f-machine: "Courier Prime", "Courier New", monospace;
+
+  --colonne: clamp(340px, 34vw, 500px);
+  --marge: clamp(16px, 4vw, 64px);
+  --ombre-feuille: 0 1px 1px rgb(4 33 31 / .16), 0 18px 36px -18px rgb(4 33 31 / .6);
+  --sortie: cubic-bezier(.16, 1, .3, 1);
+
+  /* Fenêtre découpée dans la couverture */
+  --fen-x: 46vw;
+  --fen-y: 9svh;
+  --fen-w: calc(100vw - var(--fen-x) - 5vw);
+  --fen-h: 76svh;
+
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scrollbar-color: var(--chemise-ombre) var(--plan); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--chemise);
+  color: var(--encre);
+  font: 400 17px/1.62 var(--f-texte);
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--tampon);
+}
+
+::selection { background: var(--tampon); color: #fff; }
+
+a { color: inherit; text-decoration-color: var(--tampon); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--tampon); }
+:focus-visible { outline: 2px solid var(--tampon); outline-offset: 3px; border-radius: 2px; }
+
+.evitement {
+  position: absolute; left: 12px; top: -60px; z-index: 50;
+  background: var(--dymo); color: #fff; padding: 8px 14px;
+}
+.evitement:focus { top: 12px; }
+.evitement:hover, .evitement:focus { color: #fff; }
+
+/* --- Plan annexé ----------------------------------------------------------- */
+
+.carte { position: fixed; inset: 0; z-index: 0; background: var(--plan); }
+.carte .maplibregl-canvas:focus-visible { outline-offset: -4px; }
+
+/* Toujours dans la page (visibility et non display) pour pouvoir précharger les photos */
+.calque { position: fixed; inset: 0; z-index: 1; pointer-events: none; visibility: hidden; }
+.calque.actif { visibility: visible; }
+.calque-carte {
+  position: absolute; inset: 0;
+  clip-path: inset(0 calc(100% - var(--coupe, 70vw)) 0 0);
+}
+.calque-poignee {
+  position: absolute; top: 50%; left: var(--coupe, 70vw);
+  transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 8px;
+  padding: 0; border: 0; background: none; cursor: ew-resize;
+  pointer-events: auto; touch-action: none;
+}
+.calque-ligne {
+  position: absolute; top: 0; bottom: 0; left: var(--coupe, 70vw);
+  width: 2px; margin-left: -1px; background: #fff;
+  box-shadow: 0 0 0 1px rgb(27 29 31 / .35);
+}
+.calque-poignee svg {
+  position: relative; width: 40px; height: 40px; padding: 8px;
+  background: var(--feuille); border: 1.5px solid var(--encre); border-radius: 50%;
+  fill: none; stroke: var(--encre); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  box-shadow: 0 2px 4px rgb(0 0 0 / .25);
+}
+.calque-date {
+  position: relative; padding: 3px 8px; background: var(--feuille);
+  font: 700 12px/1.3 var(--f-machine); color: var(--encre); white-space: nowrap;
+  box-shadow: 0 4px 10px -4px rgb(0 0 0 / .45);
+}
+
+/* --- Couverture : chemise cartonnée percée d'une fenêtre --------------------- */
+
+.couverture {
+  position: relative; z-index: 6;
+  height: 100svh; min-height: 600px;
+  background: var(--chemise);
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 100% no-repeat,
+    linear-gradient(#000 0 0) var(--fen-x) var(--fen-y) / var(--fen-w) var(--fen-h) no-repeat;
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 100% no-repeat exclude,
+    linear-gradient(#000 0 0) var(--fen-x) var(--fen-y) / var(--fen-w) var(--fen-h) no-repeat;
+  /* La chemise se soulève par le bas en s'éloignant, charnière en haut */
+  transform-origin: 50% 0;
+  transform: perspective(1800px) rotateX(calc(var(--ouverture, 0) * -34deg));
+  box-shadow: 0 calc(var(--ouverture, 0) * 40px) 60px -20px rgb(4 33 31 / .5);
+}
+
+.fenetre {
+  position: absolute;
+  left: var(--fen-x); top: var(--fen-y); width: var(--fen-w); height: var(--fen-h);
+  box-shadow: inset 0 0 0 1px rgb(4 33 31 / .45);
+}
+.fenetre-legende {
+  position: absolute; left: 0; top: 100%; margin: 10px 0 0;
+  max-width: 60ch;
+  font: 400 12.5px/1.4 var(--f-machine); color: var(--chemise-encre);
+}
+
+.couverture-texte {
+  position: absolute; left: max(64px, 6vw); top: 0; bottom: 0;
+  width: min(var(--fen-x) - max(64px, 6vw) - 4vw, 560px);
+  display: flex; flex-direction: column; justify-content: center; gap: 28px;
+}
+
+/* Ruban Dymo collé sur le dos de la chemise, lu de bas en haut */
+.dymo {
+  margin: 0;
+  padding: .9em .32em;
+  background: var(--dymo);
+  color: #f2f2ee;
+  font: 800 clamp(1rem, 1.5vw, 1.35rem)/1 var(--f-texte);
+  font-stretch: 112%;
+  letter-spacing: .26em; text-transform: uppercase;
+  border-radius: 3px;
+}
+.dymo-dos {
+  position: absolute; left: clamp(14px, 1.6vw, 26px); top: 50%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.etiquette {
+  position: relative;
+  padding: clamp(22px, 2.4vw, 34px);
+  background: var(--feuille);
+  box-shadow: var(--ombre-feuille);
+}
+.etiquette::before {
+  content: ""; position: absolute; inset: 7px;
+  border: 1px solid var(--encre); outline: 1px solid var(--encre); outline-offset: -4px;
+  pointer-events: none;
+}
+.etiquette h1 {
+  margin: 0;
+  font-weight: 800; font-stretch: 72%;
+  font-size: clamp(2.5rem, 4.6vw, 4.6rem); line-height: .94;
+  letter-spacing: -.012em;
+  text-wrap: balance;
+}
+.etiquette-sous-titre {
+  margin: 18px 0 0; max-width: 40ch;
+  font-size: clamp(1rem, 1.15vw, 1.12rem); color: var(--encre-douce);
+}
+/* Cote sur toute la mesure ; le tampon a sa propre ligne, calé à droite */
+.etiquette-pied {
+  display: grid; gap: 10px;
+  margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--filet);
+}
+.etiquette-cote { margin: 0; font: 400 13px/1.5 var(--f-machine); color: var(--encre); }
+.etiquette-cote span { font-family: var(--f-texte); color: var(--encre-douce); }
+
+/* Tampons encreurs */
+.tampon {
+  margin: 0;
+  display: inline-block;
+  padding: .28em .7em .22em;
+  border: 3px double currentColor; border-radius: 4px;
+  color: var(--tampon);
+  font: 800 1rem/1 var(--f-texte); font-stretch: 78%;
+  letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+  mix-blend-mode: multiply;
+}
+.tampon-couverture {
+  justify-self: end;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  transform: rotate(-8deg);
+}
+
+.bouton-dymo {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: .6em;
+  padding: .7em 1.1em .66em;
+  background: var(--dymo); color: #f2f2ee;
+  font: 800 .95rem/1 var(--f-texte); font-stretch: 112%;
+  letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / .35);
+  transition: transform .25s var(--sortie), box-shadow .25s var(--sortie);
+}
+.bouton-dymo svg { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.bouton-dymo:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 8px 14px -6px rgb(0 0 0 / .5); }
+.bouton-dymo:active { transform: translateY(0); }
+
+/* --- Intercalaires --------------------------------------------------------- */
+
+.intercalaires {
+  /* Au-dessus de la couverture : les intercalaires dépassent de la chemise dès l'ouverture */
+  position: fixed; right: 0; top: 50%; z-index: 7;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 5px;
+  transition: opacity .4s var(--sortie);
+}
+.intercalaires a {
+  display: block;
+  width: 64px; padding: 8px 0 8px 14px;
+  background: var(--chemise-lumiere);
+  color: var(--chemise-encre);
+  font: 700 13px/1 var(--f-machine); text-decoration: none;
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset 0 0 0 1px rgb(4 33 31 / .25), -2px 2px 6px -2px rgb(0 0 0 / .3);
+  transform: translateX(12px);
+  transition: transform .35s var(--sortie), background-color .35s;
+}
+.intercalaires a:nth-child(even) { background-color: #7cc7bd; }
+.intercalaires a:hover { transform: translateX(4px); color: var(--chemise-encre); }
+.intercalaires a[aria-current="step"] {
+  background: var(--feuille); color: var(--tampon);
+  transform: translateX(0);
+}
+
+/* --- Cartouche du plan ----------------------------------------------------- */
+
+.cartouche {
+  position: fixed; right: calc(64px + 2vw); bottom: 24px; z-index: 3;
+  width: 320px;
+  background: var(--feuille);
+  border: 1.5px solid var(--encre);
+  box-shadow: 0 2px 4px rgb(4 33 31 / .24);
+  font-size: 13px; line-height: 1.35;
+  opacity: var(--intercalaires, 0);
+  transition: opacity .4s var(--sortie);
+}
+.c-titre { margin: 0; padding: 10px 12px; border-bottom: 1px solid var(--encre); line-height: 1.2; text-wrap: balance; }
+/* Numéro du plan : une case du pied du cartouche */
+.c-num { font: 700 12px/1 var(--f-machine); color: var(--tampon); white-space: nowrap; }
+.c-titre strong { font-weight: 750; font-stretch: 85%; font-size: 16px; }
+
+.c-legende { list-style: none; margin: 0; padding: 8px 12px; display: grid; gap: 5px; border-bottom: 1px solid var(--encre); }
+.c-legende:empty { display: none; }
+.c-legende li { display: flex; align-items: center; gap: 10px; }
+.c-legende svg { flex: none; width: 28px; height: 14px; overflow: visible; }
+
+.c-pied { display: grid; grid-template-columns: auto auto 28px 1fr; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--filet); }
+.c-annee { display: flex; }
+.c-annee span {
+  display: inline-grid; place-items: center;
+  width: 19px; height: 24px;
+  border: 1px solid var(--encre); margin-left: -1px;
+  font: 700 15px/1 var(--f-machine); font-variant-numeric: tabular-nums;
+}
+.c-annee span.frappe { animation: frappe .32s var(--sortie) both; }
+@keyframes frappe {
+  0% { opacity: 0; transform: translateY(-5px); }
+  60% { opacity: 1; transform: translateY(1px); }
+  100% { opacity: 1; transform: none; }
+}
+.c-nord { width: 18px; height: 26px; justify-self: center; transition: transform .2s linear; }
+.c-nord-plein { fill: var(--encre); }
+.c-nord-vide { fill: var(--feuille); stroke: var(--encre); stroke-width: 1; }
+.c-nord text { font: 700 7px var(--f-texte); fill: var(--encre); }
+.c-echelle { display: grid; gap: 3px; justify-items: start; }
+.c-barre {
+  display: block; height: 6px; width: 80px;
+  border: 1px solid var(--encre);
+  background: linear-gradient(90deg, var(--encre) 0 50%, var(--feuille) 50% 100%);
+}
+.c-valeur { font: 400 11.5px/1 var(--f-machine); }
+
+.c-lecture { margin: 0; padding: 6px 12px; font: 400 11.5px/1.3 var(--f-machine); color: var(--encre-douce); font-variant-numeric: tabular-nums; border-bottom: 1px solid var(--filet); }
+.c-sources { margin: 0; padding: 6px 12px 8px; font-size: 11px; color: var(--encre-douce); }
+
+.c-recentrer {
+  position: absolute; left: -1.5px; bottom: calc(100% + 8px);
+  padding: 7px 12px; border: 0; border-radius: 3px;
+  background: var(--dymo); color: #f2f2ee;
+  font: 800 11.5px/1 var(--f-texte); font-stretch: 112%; letter-spacing: .14em; text-transform: uppercase;
+  cursor: pointer; box-shadow: 0 4px 10px -4px rgb(0 0 0 / .5);
+}
+.c-recentrer[hidden] { display: none; }
+.c-alerte { margin: 0; padding: 8px 12px; background: #fff3d6; font-size: 12.5px; border-top: 1px solid var(--encre); }
+.c-alerte[hidden] { display: none; }
+
+/* Au dos du dossier, le cartouche et les intercalaires se retirent */
+body.fin .cartouche, body.fin .intercalaires { opacity: 0; pointer-events: none; }
+
+/* --- Dossier : les pièces -------------------------------------------------- */
+
+.dossier {
+  position: relative; z-index: 2;
+  width: calc(var(--colonne) + var(--marge));
+  padding: 30svh 0 40svh var(--marge);
+  pointer-events: none;
+}
+
+.piece {
+  position: relative;
+  margin: 0 0 78svh;
+  padding: 40px 40px 0;
+  background: var(--feuille);
+  box-shadow: var(--ombre-feuille);
+  pointer-events: auto;
+  opacity: .82;
+  transition: opacity .5s var(--sortie);
+}
+.piece.active { opacity: 1; }
+.piece:last-child { margin-bottom: 0; }
+
+.piece h2 {
+  margin: 0 0 18px; padding-right: 120px;
+  font-weight: 780; font-stretch: 78%;
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem); line-height: 1.02;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.piece p { margin: 0 0 14px; max-width: 62ch; }
+.tampon-date {
+  position: absolute; right: 22px; top: 22px;
+  transform: rotate(-6deg);
+}
+.piece:nth-child(even) .tampon-date { transform: rotate(4deg); }
+
+.mesure {
+  padding: 10px 0 0;
+  border-top: 1px dashed var(--filet);
+  font: 400 14px/1.5 var(--f-machine);
+  color: var(--encre);
+}
+.consigne { font-style: italic; color: var(--encre-douce); }
+
+.piece-pied {
+  display: grid; grid-template-columns: auto auto 1fr;
+  margin: 26px -40px 0;
+  border-top: 1.5px solid var(--encre);
+  font: 400 12.5px/1.4 var(--f-machine);
+}
+.piece-pied > span { padding: 9px 12px; border-left: 1px solid var(--encre); }
+.piece-pied > span:first-child { border-left: 0; padding-left: 40px; font-weight: 700; }
+/* Grille d'étiquette : n°, date, référence ; les sources sur toute la largeur */
+.piece-pied > span.piece-sources { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--encre); padding-left: 40px; }
+.piece-sources a { color: var(--tampon); }
+
+/* --- Dos de la chemise : bordereau ------------------------------------------ */
+
+.dos {
+  position: relative; z-index: 2;
+  min-height: 100svh;
+  display: grid; place-items: center;
+  padding: 14svh var(--marge);
+  background: var(--chemise);
+  box-shadow: 0 -30px 60px -30px rgb(4 33 31 / .55);
+}
+.bordereau {
+  position: relative;
+  width: min(1040px, 100%);
+  padding: clamp(28px, 4vw, 56px);
+  background: var(--feuille);
+  box-shadow: var(--ombre-feuille);
+}
+.bordereau h2 {
+  margin: 0 0 28px;
+  font-weight: 800; font-stretch: 72%;
+  font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1;
+}
+.bordereau-colonnes { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 4vw, 56px); }
+.bordereau h3 {
+  margin: 0 0 12px; padding-bottom: 6px; border-bottom: 1.5px solid var(--encre);
+  font: 700 13px/1.2 var(--f-machine); text-transform: uppercase; letter-spacing: .08em;
+}
+.methode { margin: 0; padding-left: 1.4em; display: grid; gap: 12px; }
+.methode li::marker { font: 700 14px var(--f-machine); color: var(--tampon); }
+.sources { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.sources li { padding-left: 14px; border-left: 1px solid var(--filet); }
+.licence { margin: 16px 0 0; font: 400 13px var(--f-machine); }
+.signature {
+  margin: 44px 0 0; padding-top: 16px; border-top: 1px solid var(--encre);
+  font: 400 15px/1.4 var(--f-machine);
+}
+.liens { margin: 8px 0 0; font: 400 14px/1.5 var(--f-machine); }
+/* Champ à remplir avant publication : bien visible tant qu'il n'est pas complété */
+.a-completer { color: var(--ruban); border-bottom: 1px dashed currentColor; }
+.avertissement { margin: 8px 0 0; max-width: 70ch; font-size: 14px; color: var(--encre-douce); }
+.tampon-clos {
+  position: absolute; right: clamp(24px, 5vw, 64px); bottom: clamp(28px, 5vw, 60px);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  transform: rotate(-10deg);
+}
+
+/* --- Étiquettes de la carte (marqueurs HTML) -------------------------------- */
+
+.lieu {
+  display: flex; align-items: center; gap: 6px;
+  font: 650 11px/1 var(--f-texte); font-stretch: 85%;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--encre);
+  text-shadow: 0 0 2px var(--plan), 0 0 4px var(--plan), 0 0 6px var(--plan);
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity .5s var(--sortie);
+}
+.lieu::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--encre); box-shadow: 0 0 0 2px var(--plan); }
+.lieu.eau { font-style: italic; font-weight: 500; text-transform: none; letter-spacing: .02em; font-size: 13px; color: var(--eau); }
+.lieu.eau::before { display: none; }
+.lieu.siege::before { width: 9px; height: 9px; border-radius: 0; background: var(--tampon); }
+.lieu.siege { color: var(--tampon); }
+.lieu.visible { opacity: 1; }
+
+/* Infobulles de la carte */
+.maplibregl-popup.infobulle .maplibregl-popup-content {
+  padding: 6px 10px; border-radius: 2px;
+  background: var(--feuille); border: 1px solid var(--encre);
+  box-shadow: 0 6px 14px -6px rgb(0 0 0 / .45);
+  font: 600 12.5px/1.3 var(--f-texte);
+}
+.maplibregl-popup.infobulle .maplibregl-popup-tip { display: none; }
+.maplibregl-cooperative-gesture-screen { font-family: var(--f-texte); }
+
+/* --- Petits écrans : la carte en haut, les pièces glissent par-dessus -------- */
+
+@media (max-width: 820px) {
+  :root {
+    --plan-mobile: 48svh;
+    --fen-x: 16px;
+    --fen-y: 64px;
+    --fen-w: calc(100vw - 32px);
+    --fen-h: 30svh;
+  }
+  body { font-size: 16px; }
+  .couverture { min-height: 640px; }
+  /* Pas de dos visible sur téléphone : les intercalaires occupent le haut */
+  .dymo-dos { display: none; }
+  .fenetre-legende { font-size: 11.5px; }
+  .couverture-texte {
+    left: 16px; right: 16px; width: auto;
+    top: calc(var(--fen-y) + var(--fen-h) + 52px); bottom: auto;
+    gap: 18px;
+  }
+  .etiquette-sous-titre { margin-top: 12px; }
+  .etiquette h1 { font-size: clamp(2.1rem, 10vw, 3rem); }
+  .tampon-couverture { font-size: .9rem; }
+
+  .intercalaires {
+    top: 0; left: 0; right: 0; transform: none;
+    flex-direction: row; gap: 3px; padding: 0 8px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .intercalaires a {
+    width: auto; flex: 1 0 auto; padding: 12px 8px 7px; text-align: center;
+    border-radius: 0 0 6px 6px; transform: translateY(-6px);
+  }
+  .intercalaires a:hover { transform: translateY(-3px); }
+  .intercalaires a[aria-current="step"] { transform: none; }
+
+  /* Cartouche compact : titre et année sur une ligne, légende sur une seconde */
+  .cartouche {
+    z-index: 4;
+    left: 8px; right: 8px; top: 40px; bottom: auto; width: auto;
+    display: grid; grid-template-columns: 1fr auto; font-size: 12px;
+  }
+  .c-titre { grid-area: 1 / 1; border-bottom: 0; padding: 6px 10px; }
+  .c-num { font-size: 11px; }
+  .c-titre strong { font-size: 13.5px; }
+  .c-pied { grid-area: 1 / 2; display: flex; gap: 8px; align-items: center; border: 0; padding: 6px 10px; }
+  .c-annee span { width: 15px; height: 20px; font-size: 12px; }
+  .c-nord, .c-echelle, .c-lecture, .c-sources { display: none; }
+  .c-legende {
+    grid-area: 2 / 1 / 3 / 3;
+    display: flex; flex-wrap: wrap; gap: 3px 14px;
+    border-top: 1px solid var(--encre); border-bottom: 0; padding: 5px 10px;
+    font-size: 11.5px;
+  }
+  .c-legende li { gap: 6px; }
+  .c-legende svg { width: 22px; }
+  .c-recentrer { left: auto; right: -1.5px; bottom: auto; top: calc(100% + 6px); }
+
+  /* Le plan reste en haut ; les pièces défilent dessous et glissent sous lui */
+  .carte, .calque { bottom: auto; height: var(--plan-mobile); z-index: 3; }
+  .carte { border-bottom: 1.5px solid var(--encre); box-shadow: 0 10px 24px -14px rgb(4 33 31 / .6); }
+  .dos { z-index: 5; }
+
+  .dossier { width: auto; padding: calc(var(--plan-mobile) + 24px) 12px 30svh; }
+  .piece { margin-bottom: 36svh; padding: 30px 22px 0; opacity: 1; }
+  .piece h2 { padding-right: 0; margin-top: 26px; }
+  .tampon-date { top: 14px; right: 14px; font-size: .85rem; }
+  .piece-pied { grid-template-columns: auto 1fr; margin: 22px -22px 0; }
+  .piece-pied > span:first-child { padding-left: 22px; }
+  .piece-pied > span.piece-ref,
+  .piece-pied > span.piece-sources { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--encre); padding-left: 22px; }
+  .bordereau-colonnes { grid-template-columns: 1fr; }
+  .tampon-clos { position: static; margin-top: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .couverture { transform: none; }
+  .piece, .lieu, .intercalaires, .cartouche, .bouton-dymo { transition: none; }
+  .c-annee span.frappe { animation: none; }
+}

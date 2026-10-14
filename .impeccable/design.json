@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T00:15:59+00:00",
+  "title": "Design System: 50 ans au fil de la Durance",
+  "extensions": {
+    "colorMeta": {
+      "chemise": {
+        "role": "primary",
+        "displayName": "Chemise Turquoise",
+        "canonical": "oklch(60.8% 0.102 186)",
+        "tonalRamp": [
+          "#00100d",
+          "#002c29",
+          "#004d48",
+          "#007169",
+          "#16968c",
+          "#4abaaf",
+          "#72dfd3",
+          "#bbfef5"
+        ]
+      },
+      "chemise-ombre": {
+        "role": "primary",
+        "displayName": "Chemise Ombre",
+        "canonical": "oklch(48.0% 0.080 187)",
+        "tonalRamp": [
+          "#000f0d",
+          "#002c29",
+          "#094d47",
+          "#157069",
+          "#40928a",
+          "#65b6ad",
+          "#8adbd2",
+          "#bafef6"
+        ]
+      },
+      "chemise-lumiere": {
+        "role": "primary",
+        "displayName": "Chemise Lumière",
+        "canonical": "oklch(70.4% 0.102 186)",
+        "tonalRamp": [
+          "#00100d",
+          "#002c29",
+          "#004d47",
+          "#017169",
+          "#18968b",
+          "#4bbaaf",
+          "#73dfd3",
+          "#bbfef5"
+        ]
+      },
+      "chemise-pale": {
+        "role": "primary",
+        "displayName": "Chemise Pâle",
+        "canonical": "oklch(77.8% 0.076 185)",
+        "tonalRamp": [
+          "#000f0d",
+          "#002c28",
+          "#054d46",
+          "#1f6f67",
+          "#469188",
+          "#6ab5ab",
+          "#8edad0",
+          "#b9fff5"
+        ]
+      },
+      "chemise-encre": {
+        "role": "primary",
+        "displayName": "Encre de Chemise",
+        "canonical": "oklch(22.6% 0.035 189)",
+        "tonalRamp": [
+          "#000f0e",
+          "#0e2a28",
+          "#2c4846",
+          "#4a6865",
+          "#6b8986",
+          "#8daca9",
+          "#b1d1cd",
+          "#d5f7f3"
+        ]
+      },
+      "tampon": {
+        "role": "secondary",
+        "displayName": "Violet Tampon",
+        "canonical": "oklch(44.3% 0.145 294)",
+        "tonalRamp": [
+          "#10002e",
+          "#2d0062",
+          "#492a86",
+          "#684caa",
+          "#886ed0",
+          "#ab91f6",
+          "#ccbffe",
+          "#efecfe"
+        ]
+      },
+      "ruban": {
+        "role": "tertiary",
+        "displayName": "Ruban Rouge",
+        "canonical": "oklch(48.3% 0.166 29)",
+        "tonalRamp": [
+          "#220000",
+          "#4d0000",
+          "#800402",
+          "#ab2c21",
+          "#d35244",
+          "#fc7766",
+          "#fcb5a9",
+          "#ffe9e5"
+        ]
+      },
+      "feuille": {
+        "role": "neutral",
+        "displayName": "Feuille",
+        "canonical": "oklch(99.3% 0.003 106)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#252524",
+          "#424240",
+          "#616160",
+          "#828281",
+          "#a5a5a3",
+          "#c9c9c7",
+          "#eeeeec"
+        ]
+      },
+      "filet": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "oklch(89.0% 0.007 209)",
+        "tonalRamp": [
+          "#080c0d",
+          "#212627",
+          "#3e4344",
+          "#5d6263",
+          "#7e8384",
+          "#a0a6a7",
+          "#c4cacb",
+          "#eaf0f1"
+        ]
+      },
+      "encre": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "oklch(22.9% 0.005 248)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#232527",
+          "#404244",
+          "#5f6164",
+          "#808385",
+          "#a3a5a8",
+          "#c7c9cc",
+          "#eceff2"
+        ]
+      },
+      "encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre Douce",
+        "canonical": "oklch(43.3% 0.013 235)",
+        "tonalRamp": [
+          "#060c10",
+          "#1f262b",
+          "#3c4348",
+          "#5a6368",
+          "#7b8489",
+          "#9ea7ac",
+          "#c1cbd1",
+          "#e6f0f6"
+        ]
+      },
+      "dymo": {
+        "role": "neutral",
+        "displayName": "Ruban Dymo",
+        "canonical": "oklch(19.6% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "dymo-texte": {
+        "role": "neutral",
+        "displayName": "Lettrage Dymo",
+        "canonical": "oklch(96.0% 0.005 106)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423f",
+          "#61615e",
+          "#82827f",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefeb"
+        ]
+      },
+      "plan": {
+        "role": "map",
+        "displayName": "Fond de plan",
+        "canonical": "oklch(95.2% 0.006 129)",
+        "tonalRamp": [
+          "#0a0c09",
+          "#242623",
+          "#41433f",
+          "#60625e",
+          "#81837f",
+          "#a4a6a2",
+          "#c8cac6",
+          "#edefeb"
+        ]
+      },
+      "eau": {
+        "role": "map",
+        "displayName": "Eau, tracé de la Durance",
+        "canonical": "oklch(47.5% 0.113 250)",
+        "tonalRamp": [
+          "#000b22",
+          "#002647",
+          "#034476",
+          "#25649f",
+          "#4886c3",
+          "#6baae9",
+          "#a1cefd",
+          "#e3f0fe"
+        ]
+      },
+      "lit": {
+        "role": "map",
+        "displayName": "Lit en eau",
+        "canonical": "oklch(83.0% 0.056 240)",
+        "tonalRamp": [
+          "#000d1c",
+          "#04283e",
+          "#24465d",
+          "#43667e",
+          "#6387a1",
+          "#85aac5",
+          "#a9cfeb",
+          "#dff1ff"
+        ]
+      },
+      "lac": {
+        "role": "map",
+        "displayName": "Lac de Serre-Ponçon",
+        "canonical": "oklch(66.9% 0.102 246)",
+        "tonalRamp": [
+          "#000c1f",
+          "#002743",
+          "#054570",
+          "#276697",
+          "#4a88bc",
+          "#6dabe1",
+          "#9acffe",
+          "#e2f1ff"
+        ]
+      },
+      "affluent": {
+        "role": "map",
+        "displayName": "Affluents et Rhône",
+        "canonical": "oklch(73.2% 0.078 244)",
+        "tonalRamp": [
+          "#000c1f",
+          "#002742",
+          "#164668",
+          "#38668a",
+          "#5988ae",
+          "#7babd3",
+          "#9ecff9",
+          "#e2f1fe"
+        ]
+      },
+      "canal": {
+        "role": "map",
+        "displayName": "Canal EDF",
+        "canonical": "oklch(63.6% 0.154 51)",
+        "tonalRamp": [
+          "#1c0300",
+          "#401800",
+          "#683007",
+          "#954911",
+          "#c8610e",
+          "#f0853f",
+          "#ffb68c",
+          "#feeadf"
+        ]
+      },
+      "nature": {
+        "role": "map",
+        "displayName": "Natura 2000",
+        "canonical": "oklch(56.8% 0.119 150)",
+        "tonalRamp": [
+          "#001102",
+          "#012e10",
+          "#065023",
+          "#20733b",
+          "#46965b",
+          "#6aba7d",
+          "#8fdfa0",
+          "#cafed3"
+        ]
+      },
+      "limite": {
+        "role": "map",
+        "displayName": "Limite départementale",
+        "canonical": "oklch(61.1% 0.011 229)",
+        "tonalRamp": [
+          "#070c0f",
+          "#202629",
+          "#3c4347",
+          "#5b6366",
+          "#7c8488",
+          "#9ea7ab",
+          "#c2cbcf",
+          "#e7f0f5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display condensé",
+        "purpose": "Cover title sticker; bordereau heading at clamp(2.2rem, 4vw, 3.4rem), line-height 1."
+      },
+      "headline": {
+        "displayName": "Titre de pièce",
+        "purpose": "Each pièce's heading."
+      },
+      "title": {
+        "displayName": "Titre du plan",
+        "purpose": "Cartouche plan title (13.5px on phones)."
+      },
+      "body": {
+        "displayName": "Texte courant",
+        "purpose": "Pièce prose, max 62ch; 16px on phones."
+      },
+      "label-dymo": {
+        "displayName": "Ruban Dymo",
+        "purpose": "Primary action, spine label (0.26em tracking), Recentrer tape (11.5px)."
+      },
+      "label-tampon": {
+        "displayName": "Tampon",
+        "purpose": "Date stamps and closing marks, in violet."
+      },
+      "label-lieu": {
+        "displayName": "Lieu",
+        "purpose": "Map town labels with a plan-coloured halo; water names italic 500 13px in eau."
+      },
+      "machine": {
+        "displayName": "Machine à écrire",
+        "purpose": "Label grid, cote line, window caption, readout, scale, licence, signature, bordereau register heads; 700 for pièce numbers, tabs, year cells."
+      },
+      "machine-mesure": {
+        "displayName": "Mesure",
+        "purpose": "'Sur le plan :' measure blocks."
+      }
+    },
+    "shadows": [
+      {
+        "name": "feuille",
+        "value": "0 1px 1px rgb(4 33 31 / .16), 0 18px 36px -18px rgb(4 33 31 / .6)",
+        "purpose": "Sheets on the folder: pièces, title sticker, bordereau."
+      },
+      {
+        "name": "ruban",
+        "value": "0 2px 3px rgb(0 0 0 / .35)",
+        "purpose": "Dymo button at rest; hover 0 8px 14px -6px rgb(0 0 0 / .5)."
+      },
+      {
+        "name": "cartouche",
+        "value": "0 2px 4px rgb(4 33 31 / .24)",
+        "purpose": "Title block nearly flush on the plan."
+      },
+      {
+        "name": "onglet",
+        "value": "inset 0 0 0 1px rgb(4 33 31 / .25), -2px 2px 6px -2px rgb(0 0 0 / .3)",
+        "purpose": "Intercalaire tabs."
+      },
+      {
+        "name": "couverture-levee",
+        "value": "0 calc(var(--ouverture) * 40px) 60px -20px rgb(4 33 31 / .5)",
+        "purpose": "Grows as the cover hinges open."
+      },
+      {
+        "name": "dos",
+        "value": "0 -30px 60px -30px rgb(4 33 31 / .55)",
+        "purpose": "Back of the folder sliding over the plan."
+      }
+    ],
+    "motion": [
+      {
+        "name": "sortie",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Easing for every UI transition."
+      },
+      {
+        "name": "charniere-couverture",
+        "value": "perspective(1800px) rotateX(0deg to -34deg), transform-origin top, over 0.9 viewport heights of scroll",
+        "purpose": "Cover lifts on its hinge as the dossier opens."
+      },
+      {
+        "name": "apparition-intercalaires",
+        "value": "opacity 0 to 1 between 0.55 and 0.85 viewport heights of scroll; .4s",
+        "purpose": "Tabs and cartouche appear once the cover is open; fade out on the back of the dossier."
+      },
+      {
+        "name": "trace-riviere",
+        "value": "line-progress gradient, 4200ms, ease-out cubic",
+        "purpose": "The Durance draws itself downstream on load."
+      },
+      {
+        "name": "frappe-annee",
+        "value": ".32s per digit, 70ms stagger",
+        "purpose": "Changed year digits retyped cell by cell; the cartouche never reflows."
+      },
+      {
+        "name": "vol-camera",
+        "value": "flyTo 2600ms, curve 1.5",
+        "purpose": "Camera flight to each pièce's plate."
+      },
+      {
+        "name": "fondu-couches",
+        "value": "800ms",
+        "purpose": "Layer opacity cross-fade between plates."
+      },
+      {
+        "name": "piece-active",
+        "value": "opacity .82 to 1, .5s",
+        "purpose": "Active sheet on desktop."
+      },
+      {
+        "name": "onglet",
+        "value": "transform .35s",
+        "purpose": "Tab slide on hover and when current."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "No smooth scroll, no cover rotation, no UI transitions or year animation; camera jumps; river shown fully drawn."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "telephone",
+        "value": "820px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton Dymo",
+      "kind": "button",
+      "refersTo": "bouton-dymo",
+      "description": "Primary action: black Dymo tape with embossed off-white capitals.",
+      "html": "<a class=\"ds-dymo\" href=\"#\">Ouvrir le dossier<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v15M5 12l7 7 7-7\"/></svg></a>",
+      "css": ".ds-dymo { display: inline-flex; align-items: center; gap: .6em; padding: .7em 1.1em .66em; background: #151515; color: #f2f2ee; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-weight: 800; font-size: .95rem; line-height: 1; font-stretch: 112%; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border-radius: 3px; box-shadow: 0 2px 3px rgb(0 0 0 / .35); transition: transform .25s cubic-bezier(.16, 1, .3, 1), box-shadow .25s cubic-bezier(.16, 1, .3, 1); } .ds-dymo svg { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; } .ds-dymo:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 8px 14px -6px rgb(0 0 0 / .5); } .ds-dymo:active { transform: translateY(0); } .ds-dymo:focus-visible { outline: 2px solid #5a3d9a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Recentrer (ruban Dymo)",
+      "kind": "button",
+      "refersTo": "bouton-recentrer",
+      "description": "Small Dymo tape on the cartouche, shown only after the reader moves the map.",
+      "html": "<button class=\"ds-recentrer\" type=\"button\">Recentrer le plan</button>",
+      "css": ".ds-recentrer { padding: 7px 12px; border: 0; border-radius: 3px; background: #151515; color: #f2f2ee; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-weight: 800; font-size: 11.5px; line-height: 1; font-stretch: 112%; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; box-shadow: 0 4px 10px -4px rgb(0 0 0 / .5); } .ds-recentrer:hover { color: #fff; } .ds-recentrer:focus-visible { outline: 2px solid #5a3d9a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tampon",
+      "kind": "chip",
+      "refersTo": "tampon",
+      "description": "Flat violet rubber stamp with a double border, for dates and closing marks.",
+      "html": "<p class=\"ds-tampon\">5 nov. 1976</p>",
+      "css": ".ds-tampon { display: inline-block; margin: 0; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-size: 1rem; padding: .28em .7em .22em; border: 3px double currentColor; border-radius: 4px; color: #5a3d9a; font-weight: 800; line-height: 1; font-stretch: 78%; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; mix-blend-mode: multiply; transform: rotate(-6deg); }"
+    },
+    {
+      "name": "Intercalaires",
+      "kind": "nav",
+      "refersTo": "intercalaire",
+      "description": "Year tabs protruding from the folder edge; the current tab turns to paper with violet numerals.",
+      "html": "<nav class=\"ds-tabs\"><a href=\"#\">1955</a><a href=\"#\">1966</a><a href=\"#\" aria-current=\"step\">1976</a><a href=\"#\">1982</a></nav>",
+      "css": ".ds-tabs { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; background: #16968c; padding: 12px 0; overflow: hidden; } .ds-tabs a { display: block; width: 64px; padding: 8px 0 8px 14px; background: #44b4a9; color: #04211f; font-family: 'Courier Prime', 'Courier New', monospace; font-weight: 700; font-size: 13px; line-height: 1; text-decoration: none; border-radius: 6px 0 0 6px; box-shadow: inset 0 0 0 1px rgb(4 33 31 / .25), -2px 2px 6px -2px rgb(0 0 0 / .3); transform: translateX(12px); transition: transform .35s cubic-bezier(.16, 1, .3, 1), background-color .35s; } .ds-tabs a:nth-child(even) { background-color: #7cc7bd; } .ds-tabs a:hover { transform: translateX(4px); } .ds-tabs a:focus-visible { outline: 2px solid #5a3d9a; outline-offset: 3px; } .ds-tabs a[aria-current=\"step\"] { background: #fdfdfb; color: #5a3d9a; transform: translateX(0); }"
+    },
+    {
+      "name": "Pièce",
+      "kind": "card",
+      "refersTo": "piece",
+      "description": "A numbered white sheet: date stamp, headline, body, measure block and the ruled label grid (N°, date, Réf., Sources).",
+      "html": "<article class=\"ds-piece\"><p class=\"ds-piece-tampon\">1982</p><h2>Gardien du lit et des digues</h2><p>En 1982, le syndicat devient concessionnaire de la gestion du domaine public fluvial de la Durance : il entretient le lit de la rivière et ses ouvrages.</p><p class=\"ds-mesure\">Sur le plan : 276 km de levées recensées par la BD TOPO.</p><footer class=\"ds-pied\"><span>Pièce n° 5</span><span>1982 – 1994</span><span>Réf. : concession du domaine public fluvial</span><span class=\"ds-sources\">Sources : <a href=\"#\">Département des Bouches-du-Rhône</a></span></footer></article>",
+      "css": ".ds-piece { position: relative; max-width: 500px; padding: 40px 40px 0; background: #fdfdfb; color: #1b1d1f; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.62; box-shadow: 0 1px 1px rgb(4 33 31 / .16), 0 18px 36px -18px rgb(4 33 31 / .6); } .ds-piece h2 { margin: 0 0 18px; padding-right: 120px; font-weight: 780; font-stretch: 78%; font-size: 2.2rem; line-height: 1.02; letter-spacing: -.01em; text-wrap: balance; } .ds-piece p { margin: 0 0 14px; } .ds-piece-tampon { position: absolute; right: 22px; top: 22px; margin: 0; font-size: 1rem; padding: .28em .7em .22em; border: 3px double currentColor; border-radius: 4px; color: #5a3d9a; font-weight: 800; line-height: 1; font-stretch: 78%; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; mix-blend-mode: multiply; transform: rotate(-6deg); } .ds-mesure { padding-top: 10px; border-top: 1px dashed #d6dcdd; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 14px; line-height: 1.5; } .ds-pied { display: grid; grid-template-columns: auto auto 1fr; margin: 26px -40px 0; border-top: 1.5px solid #1b1d1f; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 12.5px; line-height: 1.4; } .ds-pied > span { padding: 9px 12px; border-left: 1px solid #1b1d1f; } .ds-pied > span:first-child { border-left: 0; padding-left: 40px; font-weight: 700; } .ds-pied > .ds-sources { grid-column: 1 / -1; border-left: 0; border-top: 1px solid #1b1d1f; padding-left: 40px; } .ds-sources a { color: #5a3d9a; text-underline-offset: .18em; text-decoration-thickness: 1px; } .ds-sources a:focus-visible { outline: 2px solid #5a3d9a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Cartouche",
+      "kind": "custom",
+      "refersTo": "cartouche",
+      "description": "The plan's title block: title, legend swatches, plan number, typed year cells, scale bar, live readout, sources.",
+      "html": "<aside class=\"ds-cartouche\"><p class=\"ds-c-titre\"><strong>Le périmètre fondateur, 1976</strong></p><ul class=\"ds-c-legende\"><li><svg viewBox=\"0 0 28 14\"><rect x=\"1\" y=\"1.5\" width=\"26\" height=\"11\" fill=\"#5a3d9a\" fill-opacity=\".42\"/></svg>Communes fondatrices</li><li><svg viewBox=\"0 0 28 14\"><line x1=\"2\" y1=\"7\" x2=\"26\" y2=\"7\" stroke=\"#1f5f99\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg>La Durance</li><li><svg viewBox=\"0 0 28 14\"><line x1=\"1\" y1=\"7\" x2=\"27\" y2=\"7\" stroke=\"#7d8589\" stroke-width=\"1.3\" stroke-dasharray=\"4 2.6\"/></svg>Limite départementale</li></ul><div class=\"ds-c-pied\"><span class=\"ds-c-num\">Plan n° 4</span><span class=\"ds-c-annee\"><span>1</span><span>9</span><span>7</span><span>6</span></span><span class=\"ds-c-echelle\"><span class=\"ds-c-barre\"></span>10 km</span></div><p class=\"ds-c-lecture\">43,781° N · 5,255° E · z 8,9</p><p class=\"ds-c-sources\">IGN · INPN · Vigicrues — Licence Etalab 2.0 · MapLibre</p></aside>",
+      "css": ".ds-cartouche { width: 320px; background: #fdfdfb; color: #1b1d1f; border: 1.5px solid #1b1d1f; box-shadow: 0 2px 4px rgb(4 33 31 / .24); font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-size: 13px; line-height: 1.35; } .ds-c-titre { margin: 0; padding: 10px 12px; border-bottom: 1px solid #1b1d1f; } .ds-c-titre strong { font-weight: 750; font-stretch: 85%; font-size: 16px; } .ds-c-legende { list-style: none; margin: 0; padding: 8px 12px; display: grid; gap: 5px; border-bottom: 1px solid #1b1d1f; } .ds-c-legende li { display: flex; align-items: center; gap: 10px; } .ds-c-legende svg { flex: none; width: 28px; height: 14px; overflow: visible; } .ds-c-pied { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid #d6dcdd; } .ds-c-num { font-family: 'Courier Prime', 'Courier New', monospace; font-weight: 700; font-size: 12px; color: #5a3d9a; white-space: nowrap; } .ds-c-annee { display: flex; } .ds-c-annee span { display: inline-grid; place-items: center; width: 19px; height: 24px; border: 1px solid #1b1d1f; margin-left: -1px; font-family: 'Courier Prime', 'Courier New', monospace; font-weight: 700; font-size: 15px; } .ds-c-echelle { display: grid; gap: 3px; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 11.5px; } .ds-c-barre { display: block; height: 6px; width: 80px; border: 1px solid #1b1d1f; background: linear-gradient(90deg, #1b1d1f 0 50%, #fdfdfb 50% 100%); } .ds-c-lecture { margin: 0; padding: 6px 12px; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 11.5px; color: #4a5257; border-bottom: 1px solid #d6dcdd; } .ds-c-sources { margin: 0; padding: 6px 12px 8px; font-size: 11px; color: #4a5257; }"
+    },
+    {
+      "name": "Étiquette de couverture",
+      "kind": "card",
+      "refersTo": "etiquette-titre",
+      "description": "Title sticker on the turquoise cover: inset double rule, condensed display title, typed cote line and stamp.",
+      "html": "<div class=\"ds-chemise\"><div class=\"ds-etiquette\"><h1>50 ans au fil de la Durance</h1><p class=\"ds-sous\">Comment un syndicat de vallée né en 1976 est devenu le gestionnaire de la rivière.</p><div class=\"ds-pied-et\"><p class=\"ds-cote\">Dossier documentaire · 1955 – 2026 · sources publiques</p><p class=\"ds-tampon-c\">1976 – 2026</p></div></div></div>",
+      "css": ".ds-chemise { background: #16968c; padding: 40px; } .ds-etiquette { position: relative; max-width: 520px; padding: 30px; background: #fdfdfb; color: #1b1d1f; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; box-shadow: 0 1px 1px rgb(4 33 31 / .16), 0 18px 36px -18px rgb(4 33 31 / .6); } .ds-etiquette::before { content: \"\"; position: absolute; inset: 7px; border: 1px solid #1b1d1f; outline: 1px solid #1b1d1f; outline-offset: -4px; pointer-events: none; } .ds-etiquette h1 { margin: 0; font-weight: 800; font-stretch: 72%; font-size: 3.4rem; line-height: .94; letter-spacing: -.012em; text-wrap: balance; } .ds-sous { margin: 18px 0 0; max-width: 40ch; font-size: 1.05rem; line-height: 1.62; color: #4a5257; } .ds-pied-et { display: grid; gap: 10px; margin-top: 22px; padding-top: 14px; border-top: 1px solid #d6dcdd; } .ds-cote { margin: 0; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 13px; line-height: 1.5; } .ds-tampon-c { justify-self: end; margin: 0; font-size: 1.2rem; padding: .28em .7em .22em; border: 3px double currentColor; border-radius: 4px; color: #5a3d9a; font-weight: 800; line-height: 1; font-stretch: 78%; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; mix-blend-mode: multiply; transform: rotate(-8deg); }"
+    },
+    {
+      "name": "Étiquettes de lieux",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Map place labels in the dossier's type: towns uppercase with a dot, water names italic blue, headquarters as a violet square.",
+      "html": "<div class=\"ds-plan\"><span class=\"ds-lieu\">Cavaillon</span><span class=\"ds-lieu ds-eau\">la Durance</span><span class=\"ds-lieu ds-siege\">Siège du SMAVD</span></div>",
+      "css": ".ds-plan { display: flex; gap: 24px; align-items: center; padding: 24px; background: #eef0ec; } .ds-lieu { display: flex; align-items: center; gap: 6px; font-family: Archivo, 'Segoe UI', system-ui, sans-serif; font-weight: 650; font-size: 11px; line-height: 1; font-stretch: 85%; letter-spacing: .09em; text-transform: uppercase; color: #1b1d1f; text-shadow: 0 0 2px #eef0ec, 0 0 4px #eef0ec, 0 0 6px #eef0ec; white-space: nowrap; } .ds-lieu::before { content: \"\"; width: 5px; height: 5px; border-radius: 50%; background: #1b1d1f; box-shadow: 0 0 0 2px #eef0ec; } .ds-eau { font-style: italic; font-weight: 500; text-transform: none; letter-spacing: .02em; font-size: 13px; color: #1f5f99; } .ds-eau::before { display: none; } .ds-siege { color: #5a3d9a; } .ds-siege::before { width: 9px; height: 9px; border-radius: 0; background: #5a3d9a; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le dossier et son plan annexé",
+    "overview": "The page is a fifty-year administrative archive dossier opened on the reader's desk. A flat turquoise pressboard chemise owns whole regions of the screen (the cover, the spine, the back with its bordereau); inside it, white typed sheets carry one numbered pièce each, and behind every sheet lies the live map, drawn like a technical plan with a title-block cartouche. Every institutional mark is one of three flat physical media: violet rubber-stamp ink with a double border for dates, black Dymo tape for actions and the spine label, and a typewriter face for anything measured, referenced or read off the plan.\n\nDensity is that of a working file, not a brochure: one sheet in a narrow column, generous paper margins, and a ruled label grid at the foot of each sheet. The map follows one-idea-per-plate semiology: a single thematic subject at full strength, everything else receding, with the same colours as the author's QGIS projects. The world is entirely flat. There is no grain, ink texture, emboss or punched holes; depth comes only from sheets lying on the folder and the folder lifting off the plan.\n\nThe page is written in French and set with French typographic spacing: a narrow no-break space (U+202F) before `:` `;` `?` `!`, no-break spaces inside « guillemets », after `n°` and as thousands separators (3 000 ha, 2 000 m³/s).",
+    "keyCharacteristics": [
+      "Turquoise pressboard chemise as a full-bleed surface, never as an accent stripe.",
+      "White sheets (pièces, title sticker, bordereau, cartouche) with square corners.",
+      "Three flat inks only: violet stamp, black Dymo, typewriter black.",
+      "Archivo across a width axis: condensed for headings and stamps, expanded for Dymo tape, normal for reading.",
+      "Courier Prime reserved for cotes, dates, measures, references and live readouts.",
+      "A map drawn as a plan, colour-matched to the QGIS projects, with a cartouche title block.",
+      "Motion that is physical and archival: a cover on a hinge, a river drawing itself downstream, a year retyped digit by digit."
+    ],
+    "rules": [
+      {
+        "name": "The One Board Rule",
+        "body": "Turquoise is a surface, never a highlight. It owns whole regions (cover, back, body, tabs); it never appears as text colour, button fill or border accent on a white sheet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Stamp Ink Rule",
+        "body": "Violet is the only accent ink on the page. Anything stamped, numbered by the archive, linked or focused is violet; no second accent hue is introduced on the sheets.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plan Semiology Rule",
+        "body": "Map colours come from the shared QGIS palette and keep their meaning on every plate and in every legend swatch. A thematic layer is shown at its full opacity only on the pièce it belongs to; the rest recede or vanish.",
+        "section": "colors"
+      },
+      {
+        "name": "The Typewriter Rule",
+        "body": "Courier Prime types only what an archivist would type: cotes, dates, numbers, references, sources, measured values and the live readout. Narrative prose and pièce headings are never set in it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Width Axis Rule",
+        "body": "Hierarchy is carried by width as much as size: condensed (72–85%) for headings and stamps, 100% for reading, 112% for tape. Don't introduce a second sans family for any of these roles.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Material Rule",
+        "body": "Board, paper, ink and tape are flat colour. No grain, noise, ink bleed, emboss, punched holes or paper curl.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do let the turquoise chemise own entire regions (cover, back, page ground) and put content on white sheets.",
+      "Do give every pièce the same label grid: N°, date, Réf., Sources, typed in Courier Prime.",
+      "Do stamp dates in flat violet with a 3px double border and a slight rotation, and repeat the same date in text.",
+      "Do keep map colours identical to the QGIS palette and to the cartouche legend swatches; one thematic subject at full strength per plate.",
+      "Do set French text with a narrow no-break space before `:` `;` `?` `!` and no-break spaces in numbers, after `n°` and inside « guillemets ».",
+      "Do change Archivo's width, not its family, to move between heading, reading and tape voices.",
+      "Do give every motion an instant equivalent under `prefers-reduced-motion`."
+    ],
+    "donts": [
+      "Don't add grain, noise, ink texture, emboss, punched holes or any simulated paper material; all materials are flat.",
+      "Don't use turquoise as an accent on a sheet or violet as a surface fill on the page.",
+      "Don't set narrative paragraphs or pièce headings in Courier Prime.",
+      "Don't round sheets, the cartouche or the label grid.",
+      "Don't introduce a second accent hue on the sheets; red is reserved for digues on the map and unfinished fields.",
+      "Don't use any SMAVD logo or brand identity; the page is an independent work."
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "lbentcru": "Val-des-Prés" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 6.67942, 44.92449 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Briançon [aval] [Station partenaire EDF]" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 6.62493, 44.88652 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Argentière-la-Bessée" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 6.55919, 44.77654 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Embrun [La Clapière]" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 6.49801, 44.55536 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Archidiacre" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 6.11172, 44.47611 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Monêtier-Allemont" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.94529, 44.38056 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Salignac" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.97723, 44.13726 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Cadarache" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.7432, 43.71795 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Meyrargues [Pont Pertuis]" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.49416, 43.66595 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Cavaillon" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.03243, 43.82749 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Mallemort" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 5.17372, 43.73737 ] ] } },
+{ "type": "Feature", "properties": { "lbentcru": "Bonpas [Barrage]" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 4.9232, 43.8888 ] ] } }
+]
+}
